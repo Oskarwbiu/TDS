@@ -42,5 +42,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Health
+    uniqueID: 2296396701
+    locked: 0
+  - name: health bar
+    uniqueID: 1151939449
+    locked: 0
   m_RenderingLayers:
   - Default

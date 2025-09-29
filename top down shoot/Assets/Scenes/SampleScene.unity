@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   enemyPre: {fileID: 5534044739012983035, guid: cbd51509123c32348a112267d68dc3f3, type: 3}
-  minSpawnTime: 1
-  maxSpawnTime: 3
+  minSpawnTime: 0.5
+  maxSpawnTime: 1.5
 --- !u!4 &246415994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4326011248851505557, guid: 890cd667aec848142864815ce9f5a4fb, type: 3}
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 000000007933a9449d3be088
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -736,14 +736,6 @@ PrefabInstance:
     - target: {fileID: 2583727140898572895, guid: 113b8fb0139346149bfd947a0371cfe1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345853419037757780, guid: 113b8fb0139346149bfd947a0371cfe1, type: 3}
-      propertyPath: playerHealth
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5345853419037757780, guid: 113b8fb0139346149bfd947a0371cfe1, type: 3}
-      propertyPath: invicibleTime
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
