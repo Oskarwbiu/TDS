@@ -1,9 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=e3293f125c667bd42ba50f3e147a8831&amp;type=3#MainMenuStyle" />
-    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center;">
-        <ui:Label text="Main Menu" name="Header" class="header" />
-        <ui:Button text="Start" name="StartButton" class="button" />
-        <ui:Button text="Settings" name="SettingsButton" class="button" />
-        <ui:Button text="Exit" name="ExitButton" class="button" />
-    </ui:VisualElement>
-</ui:UXML>

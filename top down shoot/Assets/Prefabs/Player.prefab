@@ -224,6 +224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27f1ee549a2de945a9bc4d76e9e241c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  playerHealth: 4
+  invicibleTime: 2
   moveSpeed: 3
   rotationSpeed: 700
   bulletSpeed: 30

@@ -9,13 +9,15 @@ public class Player : MonoBehaviour
 
     Vector2 moveInput;
     Vector2 screenBoundery;
+    public int playerHealth = 5;
+    [SerializeField] float invicibleTime = 5f;
     [SerializeField] float moveSpeed = 3f;
     [SerializeField] float rotationSpeed = 700f;
     [SerializeField] float bulletSpeed = 7f;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject gun;
 
-
+    bool invincible;
     float targetAngle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,25 +47,43 @@ public class Player : MonoBehaviour
         rb.linearVelocity = moveInput * moveSpeed;
         if (moveInput != Vector2.zero)
         {
-         targetAngle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
+            targetAngle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
         }
 
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBoundery.x, screenBoundery.x)
-                                    ,    Mathf.Clamp(transform.position.y, -screenBoundery.y, screenBoundery.y));
-       
+                                    , Mathf.Clamp(transform.position.y, -screenBoundery.y, screenBoundery.y));
+
     }
 
-    void FixedUpdate()
+     private void FixedUpdate()
     {
-        float rotation = Mathf.MoveTowardsAngle(rb.rotation, targetAngle -90, rotationSpeed * Time.fixedDeltaTime);
+        float rotation = Mathf.MoveTowardsAngle(rb.rotation, targetAngle - 90, rotationSpeed * Time.fixedDeltaTime);
         rb.MoveRotation(rotation);
     }
+      void ResetInvincibility()
+        {
+        invincible = false;
+         }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        Destroy(gameObject);
+        
+        if (collision.gameObject.CompareTag("Enemy") && !invincible)
+        {
 
+            if (playerHealth <= 1)
+            {
+                playerHealth--;
+                Destroy(gameObject);
+            }
+            else
+            {
+                playerHealth--;
+                invincible = true;
+                Invoke("ResetInvincibility", invicibleTime);
+                Debug.Log(playerHealth);
+            }
+        }
     }
 
 }

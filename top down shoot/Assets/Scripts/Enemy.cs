@@ -6,20 +6,26 @@ public class Enemy : MonoBehaviour
     [SerializeField] float moveSpeed = 10f;
     Rigidbody2D rb;
     Vector2 direction;
-    
+    //Player playerScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
           rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindWithTag("Player").transform;
-
-        if (player == null)
+        try
         {
-            Destroy(gameObject);
+            player = GameObject.FindWithTag("Player").transform;
+           // playerScript = player.GetComponent<Player>();
+           // playerScript.playerHealth;
+
+        }
+        catch
+        {
+            Destroy(GameObject.FindWithTag("Enemy"));
         }
 
-        
+
+
     }
 
     // Update is called once per frame
