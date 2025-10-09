@@ -12,11 +12,12 @@ public class Player : MonoBehaviour
     public int playerHealth = 5;
     [SerializeField] float invicibleTime = 5f;
     [SerializeField] float moveSpeed = 3f;
-    [SerializeField] float rotationSpeed = 700f;
+    [SerializeField] float rotationSpeed = 3000f;
     [SerializeField] float bulletSpeed = 7f;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject gun;
 
+    
     bool invincible;
     float targetAngle;
 
@@ -45,22 +46,19 @@ public class Player : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = moveInput * moveSpeed;
-        if (moveInput != Vector2.zero)
-        {
-            targetAngle = Mathf.Atan2(moveInput.y, moveInput.x) * Mathf.Rad2Deg;
-        }
-
         transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBoundery.x, screenBoundery.x)
                                     , Mathf.Clamp(transform.position.y, -screenBoundery.y, screenBoundery.y));
 
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        mousePosition.z = transform.position.z;
+        Vector2 direction = (mousePosition - transform.position).normalized;
+        targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90;
+
+
     }
 
-     private void FixedUpdate()
-    {
-        float rotation = Mathf.MoveTowardsAngle(rb.rotation, targetAngle - 90, rotationSpeed * Time.fixedDeltaTime);
-        rb.MoveRotation(rotation);
-    }
-      void ResetInvincibility()
+
+    void ResetInvincibility()
         {
         invincible = false;
          }
@@ -84,6 +82,12 @@ public class Player : MonoBehaviour
                 Debug.Log(playerHealth);
             }
         }
-    }
+      
+    } 
+    void FixedUpdate()
+        {
+            float rotation = Mathf.MoveTowardsAngle(rb.rotation, targetAngle, rotationSpeed * Time.fixedDeltaTime);
+            rb.MoveRotation(rotation);
+        }
 
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 public class Playerh4 : MonoBehaviour
 {
     [SerializeField] Transform player;
-    Rigidbody2D rb;
     int Health;
     Player playerScript;
     Renderer ren;
@@ -14,7 +13,6 @@ public class Playerh4 : MonoBehaviour
     {
 
         ren = GetComponent<Renderer>();
-        rb = GetComponent<Rigidbody2D>();
         try
         {
             player = GameObject.FindWithTag("Player").transform;
